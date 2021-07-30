@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>I am not Robot</title>
+</head>
+<body onload="shuffleRandom()">
+    <div id="app"></div>
+    <button type="reset" id="reset" class="hidden1">Reset</button>
+    <button type="submit" id="btn" onclick="verifybtn1()">Verify</button> 
+    <!-- Even for more than 2 clicks, the verify button should not be rendered. -->
+    <div id="status"></div>
+</body>
+<script src="index.js"></script>
+</html>
