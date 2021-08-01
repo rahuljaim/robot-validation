@@ -28,6 +28,7 @@ There are 3 states:
 
 //get the elements
 _ = (id) => document.querySelector(id);
+_id = (id) => document.getElementById(id);
 let reset = _("#reset");
 let btn = _("#btn");
 let count = 0;
@@ -48,7 +49,7 @@ reset2 = (el2) => {
   btn.setAttribute("class", "hidden1");
   para.textContent = "";
   count = 0;
-  verifyarr.length = 0;
+  verifyarr.length=0;
   shuffleRandom();
 };
 
@@ -136,12 +137,19 @@ randonval();
 console.log(rand);
 verify = (e) => {
   reset1();
-  if (!verifyarr.includes(e.target.id)) verifyarr.push(e.target.id);
+  if (!verifyarr.includes(e.target.id)) 
+  verifyarr.push(e.target.id);
   //   e.target.id.remove;
   count++;
-  if (count == 2) {
+  if (verifyarr.length == 2) {
     btn.removeAttribute("class", "hidden1");
     btn.setAttribute("class", "visible1");
+    // verifybtn1();
+  }
+  if (verifyarr.length > 2) {
+    btn.removeAttribute("class", "visible1");
+    btn.setAttribute("class", "hidden1");
+    
     // verifybtn1();
   }
 
@@ -153,7 +161,9 @@ reset.addEventListener("click", reset2);
 verifybtn1 = (el3) => {
   btn.removeAttribute("class", "visible1");
   btn.setAttribute("class", "hidden1");
-  if (verifyarr[0] === verifyarr[1]) {
+  let [first, second] = verifyarr;
+
+  if (_id(first).getAttribute("data-ns-test") === _id(second).getAttribute("data-ns-test")) {
     para.textContent = "You are a human. Congratulations!";
     result.appendChild(para);
   } else {
